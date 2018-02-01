@@ -8,6 +8,8 @@ public class Demo {
 		theBag.add(20);
 		theBag.add(30);
 		theBag.show();
+		theBag.remove(20);
+		theBag.show();
 		
 	}
 
