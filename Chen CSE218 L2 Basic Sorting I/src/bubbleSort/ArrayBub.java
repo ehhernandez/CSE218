@@ -27,15 +27,15 @@ public class ArrayBub {
 		int numberOfSwaps = 0;
 		for(out = nElems-1; out >= 1; out--) {
 			for(in = 0; in < out; in++) {
-				numberOfComparisons++;
+//				numberOfComparisons++;
 				if(a[in] > a[in+1]) {
-					numberOfSwaps++;
+//					numberOfSwaps++;
 					swap(in, in+1);
 				}
 			}
 		}
-		System.out.println("Number of Comparisons: " + numberOfComparisons);
-		System.out.println("Number of Swaps: " + numberOfSwaps);
+//		System.out.println("Number of Comparisons: " + numberOfComparisons);
+//		System.out.println("Number of Swaps: " + numberOfSwaps);
 
 	}
 	
