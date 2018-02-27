@@ -1,4 +1,4 @@
-package simpleListedList;
+package simpleLinkedList;
 
 public class Demo {
 
