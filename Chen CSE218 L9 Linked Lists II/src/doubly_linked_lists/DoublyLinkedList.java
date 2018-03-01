@@ -9,6 +9,96 @@ public class DoublyLinkedList {
 		last = null;
 	}
 	
+	public boolean insertAfter(double key, double dData) {
+		Link newLink = new Link(dData);
+		Link current = first;
+		while(current.dData != key) {
+			current = current.next;
+			if(current == null) {
+				return false;
+			}
+		}
+		
+		if(current == last) {
+			last = newLink;
+		} else {
+			newLink.next = current.next;
+			current.next.previous = newLink;
+		}
+		
+		newLink.previous = current;
+		current.next = newLink;
+		return true;
+		
+	}
+	
+	public Link deleteKey(double key) {
+		Link current = first;
+		while (current.dData != key) {
+			current = current.next;
+			if(current == null) {
+				return null;
+			}
+		}
+		Link match = current; //shallow copy
+		
+		if(match == first) {
+			first = match.next;
+		} else {
+			match.previous.next = match.next;
+		}
+		
+		if(match == last) {
+			last = match.previous;
+		} else {
+			match.next.previous = match.previous;
+		}
+		
+		return match;
+	}
+	
+	public boolean insertBefore(double key, double dData) {
+		Link newLink = new Link(dData);
+		Link current = first;
+		while(current.dData != key) {
+			current = current.next;
+			if(current == null) {
+				return false;
+			}
+		}
+		
+		// a match is found
+		if(current == first) {
+			newLink.next = first;
+			first.previous = newLink;
+			first = newLink;
+		}  else {
+			newLink.next = current;
+			current.previous.next = newLink;
+			newLink.previous = current.previous;
+			current.previous = newLink;
+		}
+		return true;
+	}
+	
+	public void displayForward() {
+		Link current = first;
+		while(current != null) {
+			current.displayLink();
+			current = current.next;
+		}
+		System.out.println();
+	}
+	
+	public void displayBackward() {
+		Link current = last;
+		while (current != null) {
+			current.displayLink();
+			current = current.previous;
+		}
+		System.out.println();
+	}
+	
 	public boolean isEmpty() {
 		return first == null;
 	}
@@ -57,4 +147,6 @@ public class DoublyLinkedList {
 		}
 		last = newLink;
 	}
+	
+	
 }
